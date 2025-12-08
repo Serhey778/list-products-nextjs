@@ -3,7 +3,10 @@ import './globals.css';
 import { inter } from './ui/fonts';
 
 export const metadata: Metadata = {
-  title: 'List Products',
+  title: {
+    template: '%s | Products List App',
+    default: 'Products List App',
+  },
   description: 'A project called <<Product List>> was created using Next.js ',
 };
 

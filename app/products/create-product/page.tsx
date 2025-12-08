@@ -1,14 +1,14 @@
-import Breadcrumbs from '../ui/products/breadcrumbs';
+import Breadcrumbs from '../../ui/products/breadcrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Products List',
+  title: 'Product Create',
 };
 const breadcrumbs = [
-  { label: 'Home', href: '/' },
+  { label: 'Products List', href: '/products' },
   {
-    label: 'Products List',
-    href: '/products',
+    label: 'Product Create',
+    href: '/products/create-product',
     active: true,
   },
 ];
