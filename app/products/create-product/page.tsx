@@ -1,4 +1,4 @@
-import Breadcrumbs from '../../ui/products/breadcrumbs';
+import Breadcrumbs from '../../ui/breadcrumbs';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {

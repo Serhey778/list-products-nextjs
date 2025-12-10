@@ -53,3 +53,14 @@ export type Card = {
   date: string;
   islike: boolean;
 };
+
+export type CardsList = {
+  id: string;
+  type: ProductType;
+  name: Fruits | Vegetables;
+  image_url: string;
+  price: number;
+  info: string;
+  date: string;
+  islike: boolean;
+};
