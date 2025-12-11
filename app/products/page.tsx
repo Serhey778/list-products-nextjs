@@ -1,7 +1,6 @@
-// import Pagination from '@/app/ui/invoices/pagination';
-// import Search from '@/app/ui/search';
-// import { CreateInvoice } from '@/app/ui/invoices/buttons';
-import Image from 'next/image';
+import Pagination from '../ui/products/pagination';
+import Search from '../ui/products/search';
+import { CreateInvoice } from '../ui/products/buttons';
 import Cards from '../ui/products/cards';
 import CardsSkeleton from '@/app/ui/skeletons';
 import { Suspense } from 'react';
@@ -37,16 +36,16 @@ export default async function Page(props: {
       <div className="flex w-full items-center justify-between">
         <Breadcrumbs breadcrumbs={breadcrumbs} />
       </div>
-      {/* <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
+      <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search invoices..." />
         <CreateInvoice />
-      </div> */}
+      </div>
       <Suspense key={query + currentPage} fallback={<CardsSkeleton />}>
         <Cards query={query} currentPage={currentPage} />
       </Suspense>
-      {/* <div className="mt-5 flex w-full justify-center">
+      <div className="mt-5 flex w-full justify-center">
         <Pagination totalPages={totalPages} />
-      </div> */}
+      </div>
     </div>
   );
 }

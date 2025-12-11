@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import { CardsList } from './definitions';
+import { CardsList, Product } from './definitions';
 // import { LatestCardRaw } from './definitions';
 // import { formatCurrency } from './utils';
 
@@ -58,17 +58,16 @@ export async function fetchFilteredCards(query: string, currentPage: number) {
   }
 }
 
-// export async function fetchRevenue() {
-//   try {
-//     // Artificially delay a response for demo purposes.
-//     // Don't do this in production :)
-//     const data = await sql<Revenue[]>`SELECT * FROM revenue`;
-//     return data;
-//   } catch (error) {
-//     console.error('Database Error:', error);
-//     throw new Error('Failed to fetch revenue data.');
-//   }
-// }
+export async function fetchProducts() {
+  try {
+    const products = await sql<Product[]>`
+    SELECT * FROM products`;
+    return products;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch revenue data.');
+  }
+}
 
 // export async function fetchCardData() {
 //   try {

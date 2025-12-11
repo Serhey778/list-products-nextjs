@@ -1,6 +1,4 @@
-import { Product } from './definitions';
-
-export const products: Product[] = [
+export const products = [
   {
     id: 'd6e15727-9fe1-4961-8c5b-ea44a9bd81aa',
     type: 'vegetables',
@@ -35,7 +33,7 @@ export const products: Product[] = [
     id: '13D07535-C59E-4157-A011-F8D2EF4E0CBB',
     type: 'fruits',
     name: 'banana',
-    image_url: '/img/fruits/apple.png',
+    image_url: '/img/fruits/banana.png',
   },
 ];
 
@@ -132,3 +130,45 @@ export const cards = [
     islike: false,
   },
 ];
+
+export const productRange = {
+  fruits: [
+    'apple',
+    'banana',
+    'orange',
+    'pear',
+    'grape',
+    'kiwi',
+    'peach',
+    'mango',
+    'pineapple',
+    'cherry',
+    'plum',
+    'apricot',
+    'lemon',
+    'grapefruit',
+    'avocado',
+    'strawberry',
+    'watermelon',
+    'melon',
+    'pomegranate',
+    'coconut',
+  ],
+  vegetables: [
+    'potato',
+    'carrot',
+    'onion',
+    'garlic',
+    'tomato',
+    'pepper',
+    'cucumber',
+    'broccoli',
+    'cauliflower',
+    'spinach',
+    'cabbage',
+    'radish',
+    'eggplant',
+    'artichoke',
+    'celery',
+  ],
+};

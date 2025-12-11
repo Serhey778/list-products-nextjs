@@ -49,7 +49,7 @@ export type Card = {
   id: string;
   product_id: string;
   price: number;
-  info?: string;
+  info: string;
   date: string;
   islike: boolean;
 };

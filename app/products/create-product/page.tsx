@@ -1,5 +1,7 @@
 import Breadcrumbs from '../../ui/breadcrumbs';
 import { Metadata } from 'next';
+import CreateForm from '../../ui/products/create-product/create-form';
+import { fetchProducts } from '../../lib/data';
 
 export const metadata: Metadata = {
   title: 'Product Create',
@@ -14,9 +16,12 @@ const breadcrumbs = [
 ];
 
 export default async function Page() {
+  const products = [...new Set(await fetchProducts())];
+  const typeNames = [...new Set(products.map(({ type }) => type))];
   return (
     <main>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <CreateForm products={products} typeNames={typeNames} />
     </main>
   );
 }

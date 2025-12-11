@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import { products, cards } from '../lib/placeholder-data';
+import { products, cards, productRange } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -50,9 +50,45 @@ async function seedCards() {
   return insertedCards;
 }
 
+async function seedProductRange() {
+  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+  await sql`
+    CREATE TABLE IF NOT EXISTS product_range (
+      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+      fruits VARCHAR(255) NOT NULL,
+      vegetables VARCHAR(255) NOT NULL
+    );
+  `;
+
+  const insertedFruitsRange = await Promise.all(
+    productRange.fruits.map(
+      (fruit) => sql`
+        INSERT INTO product_range (fruits)
+        VALUES (${fruit})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
+
+  const insertedVegetablesRange = await Promise.all(
+    productRange.vegetables.map(
+      (vegetable) => sql`
+          INSERT INTO product_range (vegetables)
+          VALUES (${vegetable})
+          ON CONFLICT (id) DO NOTHING;
+        `
+    )
+  );
+  return [insertedFruitsRange, insertedVegetablesRange];
+}
+
 export async function GET() {
   try {
-    const result = await sql.begin((sql) => [seedProducts(), seedCards()]);
+    const result = await sql.begin((sql) => [
+      seedProducts(),
+      seedCards(),
+      [seedProductRange()],
+    ]);
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
     return Response.json({ error }, { status: 500 });

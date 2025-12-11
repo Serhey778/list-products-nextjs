@@ -4,7 +4,7 @@ const shimmer =
 
 function CardSkeleton() {
   return (
-    <div className="mb-2 w-full rounded-md bg-white p-4">
+    <div className={`${shimmer} mb-2 w-full rounded-md bg-white p-4`}>
       <div className="flex items-center justify-between border-b border-gray-200 pb-8">
         <div className="flex items-center">
           <div className="mr-2 h-25 w-25 bg-gray-200"></div>
@@ -29,7 +29,7 @@ function CardSkeleton() {
 
 export default function CardsSkeleton() {
   return (
-    <div className={`${shimmer} mt-6 flow-root`}>
+    <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-100 p-2 md:pt-0">
           <CardSkeleton />
