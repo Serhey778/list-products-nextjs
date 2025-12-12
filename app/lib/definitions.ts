@@ -57,10 +57,11 @@ export type Card = {
 export type CardsList = {
   id: string;
   type: ProductType;
+  product_id: string;
   name: Fruits | Vegetables;
   image_url: string;
   price: number;
   info: string;
-  date: Date;
+  date: string;
   islike: boolean;
 };

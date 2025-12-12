@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Product, ProductType } from '@/app/lib/definitions';
-import ProductSelect from './product-select';
-import { State } from '../../../lib/actions';
+import { Product, ProductType, CardsList } from '../../../../lib/definitions';
+import ProductSelect from './product-select-edit';
+import { State } from '../../../../lib/actions';
 import {
   AdjustmentsHorizontalIcon,
   ExclamationTriangleIcon,
@@ -12,16 +12,17 @@ export default function TypeSelect({
   products,
   typeNames,
   state,
+  card,
 }: {
   products: Product[];
   typeNames: ProductType[];
   state: State;
+  card: CardsList;
 }) {
-  const [selected, setSelected] = useState<string>('');
+  const [selected, setSelected] = useState<string>(card.type);
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value);
   };
-
   return (
     <div className="mb-4">
       <label htmlFor="type" className="mb-2 block text-sm font-medium">
@@ -32,8 +33,8 @@ export default function TypeSelect({
           <select
             id="type"
             name="type"
-            className="peer block w-full bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-400"
-            defaultValue=""
+            className="peer block w-full bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-200"
+            defaultValue={card.type}
             aria-describedby="type-error"
             onChange={handleSelectChange}
           >
@@ -61,9 +62,12 @@ export default function TypeSelect({
             </div>
           ))}
       </div>
-      {selected && (
-        <ProductSelect selected={selected} products={products} state={state} />
-      )}
+      <ProductSelect
+        selected={selected}
+        products={products}
+        state={state}
+        card={card}
+      />
     </div>
   );
 }

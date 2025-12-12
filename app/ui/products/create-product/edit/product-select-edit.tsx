@@ -1,18 +1,20 @@
-import { Product } from '@/app/lib/definitions';
+import { Product, CardsList } from '@/app/lib/definitions';
 import {
   ShoppingCartIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import { State } from '../../../lib/actions';
+import { State } from '../../../../lib/actions';
 
 export default function ProductSelect({
   products,
   selected,
   state,
+  card,
 }: {
   products: Product[];
   selected: string;
   state: State;
+  card: CardsList;
 }) {
   return (
     <>
@@ -25,8 +27,8 @@ export default function ProductSelect({
             <select
               id="product_id"
               name="product_id"
-              className="peer block w-full bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-400"
-              defaultValue=""
+              className="peer block w-full bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-200"
+              defaultValue={card.product_id}
               aria-describedby="product_id-error"
             >
               <option value="" disabled>

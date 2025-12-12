@@ -69,6 +69,34 @@ export async function fetchProducts() {
   }
 }
 
+export async function fetchCardById(id: string) {
+  try {
+    const cards = await sql<CardsList[]>`
+       SELECT
+        cards.id,
+        cards.product_id,
+        products.type,
+        products.name,
+        products.image_url,
+        cards.price,
+        cards.info,
+        cards.date,
+        cards.islike 
+      FROM cards
+      JOIN products ON cards.product_id = products.id
+      WHERE cards.id = ${id};
+    `;
+    const cardArray = cards.map((card) => ({
+      ...card,
+      price: card.price / 100,
+    }));
+    return cardArray[0];
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch card.');
+  }
+}
+
 // export async function fetchCardData() {
 //   try {
 //     // You can probably combine these into a single SQL query
@@ -111,30 +139,6 @@ export async function fetchProducts() {
 //   } catch (error) {
 //     console.error('Database Error:', error);
 //     throw new Error('Failed to fetch total number of invoices.');
-//   }
-// }
-
-// export async function fetchInvoiceById(id: string) {
-//   try {
-//     const data = await sql<InvoiceForm[]>`
-//       SELECT
-//         invoices.id,
-//         invoices.customer_id,
-//         invoices.amount,
-//         invoices.status
-//       FROM invoices
-//       WHERE invoices.id = ${id};
-//     `;
-
-//     const invoice = data.map((invoice) => ({
-//       ...invoice,
-//       // Convert amount from cents to dollars
-//       amount: invoice.amount / 100,
-//     }));
-//     return invoice[0];
-//   } catch (error) {
-//     console.error('Database Error:', error);
-//     throw new Error('Failed to fetch invoice.');
 //   }
 // }
 

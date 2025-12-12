@@ -30,7 +30,7 @@ export default function CreateForm({
           >
             Cancel
           </Link>
-          <Button type="submit">Create Invoice</Button>
+          <Button type="submit">Create Cart</Button>
         </div>
       </div>
     </form>

@@ -29,7 +29,7 @@ async function seedProducts() {
 }
 
 async function seedCards() {
-  //await sql`DROP TABLE cards`;
+  await sql`DROP TABLE cards`;
   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await sql`
     CREATE TABLE IF NOT EXISTS cards (

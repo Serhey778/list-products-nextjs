@@ -2,9 +2,16 @@ import {
   InformationCircleIcon,
   ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
-import { State } from '../../../lib/actions';
+import { State } from '../../../../lib/actions';
+import { CardsList } from '@/app/lib/definitions';
 
-export default function InfoInput({ state }: { state: State }) {
+export default function InfoInput({
+  state,
+  card,
+}: {
+  state: State;
+  card: CardsList;
+}) {
   return (
     <div className="mb-4">
       <label htmlFor="info" className="mb-2 block text-sm font-medium">
@@ -17,8 +24,9 @@ export default function InfoInput({ state }: { state: State }) {
             name="info"
             type="text"
             step="0.01"
+            defaultValue={card.info}
             placeholder="Enter product info"
-            className="peer block w-full bg-white rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-400"
+            className="peer block w-full bg-white rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-200"
             aria-describedby="info-error"
           />
           <InformationCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[25px] w-[25px] -translate-y-1/2 text-green-800" />
