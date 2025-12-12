@@ -16,7 +16,7 @@ const breadcrumbs = [
 ];
 
 export default async function Page() {
-  const products = [...new Set(await fetchProducts())];
+  const products = await fetchProducts();
   const typeNames = [...new Set(products.map(({ type }) => type))];
   return (
     <main>

@@ -61,6 +61,6 @@ export type CardsList = {
   image_url: string;
   price: number;
   info: string;
-  date: string;
+  date: Date;
   islike: boolean;
 };

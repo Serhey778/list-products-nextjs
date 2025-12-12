@@ -1,5 +1,5 @@
 import postgres from 'postgres';
-import { products, cards, productRange } from '../lib/placeholder-data';
+import { products, cards } from '../lib/placeholder-data';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
@@ -12,6 +12,9 @@ async function seedProducts() {
       name VARCHAR(255) NOT NULL,
       image_url VARCHAR(255) NOT NULL
     );
+  `;
+  await sql`
+  DELETE FROM products;
   `;
   const insertedProducts = await Promise.all(
     products.map(
@@ -26,6 +29,7 @@ async function seedProducts() {
 }
 
 async function seedCards() {
+  //await sql`DROP TABLE cards`;
   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await sql`
     CREATE TABLE IF NOT EXISTS cards (
@@ -33,62 +37,29 @@ async function seedCards() {
       product_id UUID NOT NULL,
       price INT NOT NULL,
       info TEXT,
-      date DATE NOT NULL,
+      date TIMESTAMP,
       islike BOOLEAN NOT NULL
     );
   `;
-  const insertedCards = await Promise.all(
-    cards.map(
-      (card) => sql`
-        INSERT INTO cards (product_id, price, info, date, islike)
-        VALUES (${card.product_id}, ${card.price}, ${card.info}, ${card.date}, ${card.islike})
-        ON CONFLICT (id) DO NOTHING;
-      `
-    )
-  );
-
-  return insertedCards;
-}
-
-async function seedProductRange() {
-  await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await sql`
-    CREATE TABLE IF NOT EXISTS product_range (
-      id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-      fruits VARCHAR(255) NOT NULL,
-      vegetables VARCHAR(255) NOT NULL
-    );
+  DELETE FROM cards;
   `;
+  // // const insertedCards = await Promise.all(
+  //   cards.map(
+  //     (card) => sql`
+  //       INSERT INTO cards (product_id, price, info, date, islike)
+  //       VALUES (${card.product_id}, ${card.price}, ${card.info}, ${card.date}, ${card.islike})
+  //       ON CONFLICT (id) DO NOTHING;
+  //     `
+  //   )
+  // );
 
-  const insertedFruitsRange = await Promise.all(
-    productRange.fruits.map(
-      (fruit) => sql`
-        INSERT INTO product_range (fruits)
-        VALUES (${fruit})
-        ON CONFLICT (id) DO NOTHING;
-      `
-    )
-  );
-
-  const insertedVegetablesRange = await Promise.all(
-    productRange.vegetables.map(
-      (vegetable) => sql`
-          INSERT INTO product_range (vegetables)
-          VALUES (${vegetable})
-          ON CONFLICT (id) DO NOTHING;
-        `
-    )
-  );
-  return [insertedFruitsRange, insertedVegetablesRange];
+  // return insertedCards;
 }
 
 export async function GET() {
   try {
-    const result = await sql.begin((sql) => [
-      seedProducts(),
-      seedCards(),
-      [seedProductRange()],
-    ]);
+    const result = await sql.begin((sql) => [seedProducts(), seedCards()]);
     return Response.json({ message: 'Database seeded successfully' });
   } catch (error) {
     return Response.json({ error }, { status: 500 });

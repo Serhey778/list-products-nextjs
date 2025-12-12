@@ -48,9 +48,9 @@ export async function createCard(prevState: State, formData: FormData) {
   }
   const { product_id, price, info } = validatedFields.data;
   const priceInCents = price * 100;
-  const date = new Date(); //.toISOString().split('T')[0];
+  const date = new Date().toISOString();
   const islike = false;
-  console.log({ product_id, price, info, date, islike });
+
   try {
     await sql`
       INSERT INTO cards (product_id, price, info, date, islike)
