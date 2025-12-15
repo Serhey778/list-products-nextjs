@@ -14,7 +14,7 @@ export default async function Cards({
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-200 p-2">
           {cards?.map((card) => (
-            <Card key={card.id} card={card} />
+            <Card card={card} key={card.id} />
           ))}
         </div>
       </div>

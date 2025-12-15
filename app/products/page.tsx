@@ -1,6 +1,6 @@
 import Pagination from '../ui/products/pagination';
 import Search from '../ui/products/search';
-import { CreateInvoice } from '../ui/products/buttons';
+import { CreateCard } from '../ui/products/buttons';
 import Cards from '../ui/products/cards';
 import CardsSkeleton from '@/app/ui/skeletons';
 import { Suspense } from 'react';
@@ -38,7 +38,7 @@ export default async function Page(props: {
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search invoices..." />
-        <CreateInvoice />
+        <CreateCard />
       </div>
       <Suspense key={query + currentPage} fallback={<CardsSkeleton />}>
         <Cards query={query} currentPage={currentPage} />

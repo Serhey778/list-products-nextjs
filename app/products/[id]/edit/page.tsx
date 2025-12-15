@@ -24,7 +24,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     fetchProducts(),
   ]);
   const typeNames = [...new Set(products.map(({ type }) => type))];
-  if (!card || !products) {
+  if (!card) {
     notFound();
   }
   return (
