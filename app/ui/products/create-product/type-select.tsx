@@ -21,7 +21,6 @@ export default function TypeSelect({
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelected(event.target.value);
   };
-
   return (
     <div className="mb-4">
       <label htmlFor="type" className="mb-2 block text-sm font-medium">

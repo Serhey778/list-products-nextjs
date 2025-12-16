@@ -8,7 +8,7 @@ import TypeSelect from './type-select-edit';
 import PriceInput from './price-input-edit';
 import InfoInput from './info-input-edit';
 
-export default function CreateForm({
+export default function EditForm({
   products,
   typeNames,
   card,
@@ -22,7 +22,7 @@ export default function CreateForm({
   const [state, formAction] = useActionState(updateCardWithId, initialState);
   return (
     <form action={formAction}>
-      <div className="rounded-md bg-gray-100 p-4 md:p-6">
+      <div className="rounded-md bg-gray-100 p-4 md:p-6 md:w-250">
         <TypeSelect
           products={products}
           typeNames={typeNames}

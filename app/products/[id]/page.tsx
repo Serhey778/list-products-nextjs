@@ -9,7 +9,6 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Product Info',
 };
-
 const breadcrumbs = [
   { label: 'Products List', href: '/products' },
   {
@@ -29,9 +28,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   return (
     <main>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
-      <div className="rounded-md bg-gray-100 p-4 md:p-6">
-        <div className="flex items-center justify-between pb-4 mb-2 flex-col items-center">
-          <div className="mb-2 flex-col items-center">
+      <div className="rounded-md bg-gray-100 p-4 md:p-6 md:w-250">
+        <div className="flex items-center justify-left pb-4 mb-2">
+          <div className="mb-2 flex-col">
             <h1 className="text-3xl">Product</h1>
             <div>
               <Image
@@ -46,13 +45,13 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
             <p className="text-xl font-medium mb-2">Name : {card.name}</p>
             <p className="text-xl font-medium mb-2">Type : {card.type}</p>
             <p className="text-xl font-medium">Info : </p>
-            <div className="flex flex-wrap bg-white mb-2">
+            <div className="flex flex-wrap text-xl mb-2">
               <p className="break-words w-full text-justify">{card.info}</p>
             </div>
             <p className="text-xl font-medium mb-2">
               Price : {formatCurrency(card.price)}
             </p>
-            <p className="text-xl font-medium md-2">
+            <p className="text-xl font-medium mb-2">
               Date : {formatDateToLocal(card.date)}
             </p>
             {card.islike && (
@@ -62,10 +61,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
             )}
           </div>
         </div>
-        <div className="mt-6 flex justify-end gap-4">
+        <div className="mt-6 flex justify-end">
           <Link
             href="/products"
-            className="flex h-10 items-center rounded-lg bg-green-600 px-4 text-sm font-medium text-white transition-colors hover:bg-green-800"
+            className="flex h-10 items-center rounded-lg bg-green-600 px-4 text-xl font-medium text-white transition-colors hover:bg-green-800"
           >
             Return
           </Link>

@@ -11,7 +11,7 @@ async function seedProducts() {
       type VARCHAR(255) NOT NULL,
       name VARCHAR(255) NOT NULL,
       image_url VARCHAR(255) NOT NULL
-    );
+    )
   `;
   await sql`
   DELETE FROM products;
@@ -29,7 +29,7 @@ async function seedProducts() {
 }
 
 async function seedCards() {
-  await sql`DROP TABLE cards`;
+  //await sql`DROP TABLE cards`;
   await sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
   await sql`
     CREATE TABLE IF NOT EXISTS cards (

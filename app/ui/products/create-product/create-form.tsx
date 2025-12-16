@@ -19,7 +19,7 @@ export default function CreateForm({
   const [state, formAction] = useActionState(createCard, initialState);
   return (
     <form action={formAction}>
-      <div className="rounded-md bg-gray-100 p-4 md:p-6">
+      <div className="rounded-md bg-gray-100 p-4 md:p-6 md:w-250">
         <TypeSelect products={products} typeNames={typeNames} state={state} />
         <PriceInput state={state} />
         <InfoInput state={state} />

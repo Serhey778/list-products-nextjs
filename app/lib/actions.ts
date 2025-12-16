@@ -83,11 +83,12 @@ export async function updateCard(
 
   const { product_id, price, info } = validatedFields.data;
   const priceInCents = price * 100;
+  const date = new Date().toISOString();
 
   try {
     await sql`
       UPDATE cards
-      SET product_id = ${product_id}, price = ${priceInCents}, info = ${info}
+      SET product_id = ${product_id}, price = ${priceInCents}, info = ${info}, date = ${date}
       WHERE id = ${id}
     `;
   } catch (error) {

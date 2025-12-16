@@ -6,6 +6,7 @@ import { fetchProducts } from '../../lib/data';
 export const metadata: Metadata = {
   title: 'Product Create',
 };
+
 const breadcrumbs = [
   { label: 'Products List', href: '/products' },
   {

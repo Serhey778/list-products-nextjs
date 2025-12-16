@@ -2,6 +2,7 @@ import {
   PlusIcon,
   PencilIcon,
   HandThumbUpIcon,
+  HandThumbDownIcon,
   TrashIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
@@ -47,6 +48,7 @@ export function DeleteCard({ id }: { id: string }) {
     </>
   );
 }
+
 export function LikeCard({ id, islike }: { id: string; islike: boolean }) {
   const likeCardWithId = likeCard.bind(null, id);
   return (
@@ -62,11 +64,11 @@ export function LikeCard({ id, islike }: { id: string; islike: boolean }) {
           )}
         >
           <span className="sr-only">Like</span>
-          <HandThumbUpIcon
-            className={clsx('w-5', {
-              'text-green-600': islike === true,
-            })}
-          />
+          {islike ? (
+            <HandThumbUpIcon className="w-5" />
+          ) : (
+            <HandThumbDownIcon className="w-5" />
+          )}
         </button>
       </form>
     </>
