@@ -25,7 +25,7 @@ export default function ProductSelect({
             <select
               id="product_id"
               name="product_id"
-              className="peer block w-full bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-400"
+              className="peer block w-full h-10 bg-white cursor-pointer rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-400"
               defaultValue=""
               aria-describedby="product_id-error"
             >

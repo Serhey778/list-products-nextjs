@@ -35,7 +35,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
             <div>
               <Image
                 src={card.image_url}
-                className="mr-2 rounded-full object-contain"
+                className="mr-2 rounded-sm object-contain"
                 width={200}
                 height={200}
                 loading="eager"
