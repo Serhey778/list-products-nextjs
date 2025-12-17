@@ -8,7 +8,7 @@ export default function Card({ card }: { card: CardsList }) {
   const { id, type, name, image_url, price, date, islike } = card;
   return (
     <div className="my-4 w-full rounded-md bg-white p-4">
-      <Link href={`/products/${card.id}`} key={card.id}>
+      <Link href={`/products/${card.id}`}>
         <div className="flex items-center justify-between border-b pb-4">
           <div>
             <div className="mb-2 flex items-center">
