@@ -42,7 +42,7 @@ export default function ProductSelect({
                 }
               })}
             </select>
-            <ShoppingCartIcon className="pointer-events-none absolute left-3 top-1/2 h-[25px] w-[25px] -translate-y-1/2 text-green-800" />
+            <ShoppingCartIcon className="hidden md:block md:pointer-events-none md:absolute md:left-3 md:top-1/2 md:h-[25px] md:w-[25px] md:-translate-y-1/2 md:text-green-800" />
           </div>
         </div>
       </div>

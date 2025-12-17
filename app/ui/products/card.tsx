@@ -19,6 +19,7 @@ export default function Card({ card }: { card: CardsList }) {
                 height={80}
                 loading="eager"
                 alt={`${name}'s profile picture`}
+                style={{ objectFit: 'cover' }}
               />
               <p className="text-xl font-medium">{name}</p>
             </div>
