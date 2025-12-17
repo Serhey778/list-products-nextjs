@@ -41,7 +41,7 @@ export default async function Page(props: {
       </div>
       <Filter />
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
-        <Search placeholder="Search invoices..." />
+        <Search placeholder="Search cards..." />
         <CreateCard />
       </div>
       <Suspense key={query + currentPage} fallback={<CardsSkeleton />}>
