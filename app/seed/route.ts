@@ -44,17 +44,17 @@ async function seedCards() {
   await sql`
   DELETE FROM cards;
   `;
-  // // const insertedCards = await Promise.all(
-  //   cards.map(
-  //     (card) => sql`
-  //       INSERT INTO cards (product_id, price, info, date, islike)
-  //       VALUES (${card.product_id}, ${card.price}, ${card.info}, ${card.date}, ${card.islike})
-  //       ON CONFLICT (id) DO NOTHING;
-  //     `
-  //   )
-  // );
+  const insertedCards = await Promise.all(
+    cards.map(
+      (card) => sql`
+        INSERT INTO cards (product_id, price, info, date, islike)
+        VALUES (${card.product_id}, ${card.price}, ${card.info}, ${card.date}, ${card.islike})
+        ON CONFLICT (id) DO NOTHING;
+      `
+    )
+  );
 
-  // return insertedCards;
+  return insertedCards;
 }
 
 export async function GET() {
